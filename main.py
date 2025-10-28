@@ -211,6 +211,17 @@ async def upload(bot: Client, m: Message):
     except Exception as e:
         await m.reply_text(e)
     await m.reply_text("**𝔻ᴏɴᴇ 𝔹ᴏ𝕤𝕤😎**")
+import os
+from flask import Flask
 
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is running fine!"
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
 
 bot.run()
